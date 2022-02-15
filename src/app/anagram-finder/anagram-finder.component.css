@@ -1,0 +1,17 @@
+.anagram-search-field {
+  width: 61.8%;
+  min-width: 15em;
+}
+.anagram-finder__form {
+  display: flex;
+  justify-content: center;
+}
+.mat-list-item {
+  background: #fcfcfc;
+  border-bottom: #333;
+  margin: 0 1em;
+  color: #333;
+}
+.anagram-list-section {
+  border-radius: 3rem;
+}

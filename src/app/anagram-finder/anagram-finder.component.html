@@ -1,3 +1,57 @@
-<p>Enter something below to see all possible one word anagrams:</p>
-<p>TODO: implement me!</p>
+<div class="page-container text-center">
+  <ng-container *ngIf="dictionarySize > 0; else loading">
+    <p class="summary text-center">
+      Enter something below to see all possible anagrams mixing and containing
+      every word introduced:
+    </p>
 
+    <ng-container *ngTemplateOutlet="searchBox"></ng-container>
+    <ng-container *ngIf="query$ | async; then anagramList"></ng-container>
+  </ng-container>
+</div>
+
+<!-- TEMPLATES -->
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>
+
+<!-- SEARCH BOX -->
+<ng-template #searchBox>
+  <form
+    class="anagram-finder__form text-center"
+    [formGroup]="anagramFinderForm"
+  >
+    <mat-form-field appearance="fill" class="anagram-search-field">
+      <mat-label class="anagram-search__label">
+        Anagrams Search Query
+      </mat-label>
+      <input
+        matInput
+        type="text"
+        class="anagram-search__input"
+        formControlName="anagramSearchInput"
+        name="anagram-search__input"
+        placeholder="Atlas"
+      />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </form>
+</ng-template>
+
+<!-- ANAGRAM'S LIST STARTS -->
+<ng-template #anagramList>
+  <section class="anagram-list-section">
+    <h1>Anagrams found for `{{ query$ | async }}`:</h1>
+
+    <mat-list role="list" class="anagram-list">
+      <ng-container *ngFor="let anagram of matchList">
+        <mat-list-item
+          role="listitem"
+          *ngIf="(query$ | async | lowercase) !== (anagram | lowercase)"
+        >
+          {{ anagram }}
+        </mat-list-item>
+      </ng-container>
+    </mat-list>
+  </section>
+</ng-template>

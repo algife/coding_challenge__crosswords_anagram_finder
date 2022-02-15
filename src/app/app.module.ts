@@ -1,29 +1,35 @@
+import { TextFieldModule } from '@angular/cdk/text-field';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatFormFieldModule} from '@angular/material/form-field'; 
-import {TextFieldModule} from '@angular/cdk/text-field'; 
-
-
-import { AnagramFinderComponent } from './anagram-finder/anagram-finder.component'; 
+import { AnagramFinderComponent } from './anagram-finder/anagram-finder.component';
+import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AnagramFinderComponent
-  ],
+  declarations: [AppComponent, AnagramFinderComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatTabsModule,
     MatFormFieldModule,
-    TextFieldModule
+    MatProgressBarModule,
+    MatIconModule,
+    MatListModule,
+    MatInputModule,
+    MatFormFieldModule,
+    TextFieldModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
